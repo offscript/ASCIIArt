@@ -12,7 +12,21 @@ def importImage():
         print(im.format, im.size, im.mode)
     finally:
         print("End of Step 1")
+    return im
 
-importImage()
+def readImage(im):
+    #create a two dimensional array with first dimesion width, second dimension height
+    im_array = []
+    #print("value: " + str(x) + "y: value" + str(y))
+    for y in range(im.height):
+        for x in range(im.width) :
+            #print("x value: " + str(x) + "y: value" + str(y))
+            im_array.append(im.getpixel((x, y)))
+    #print(im_array)
+    return im_array
 
+def go():
+    im = importImage()
+    im_array = readImage(im)
 
+go()
