@@ -3,6 +3,8 @@ from PIL import Image
 
 
 char_Matrix = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
+global width
+global height
 
 def importImage():
     try: 
@@ -15,6 +17,11 @@ def importImage():
         print(im.format, im.size, im.mode)
     finally:
         print("End of Step 1")
+    im = im.resize((150,100))
+    width = im.width
+    print(width)
+    height = im.height
+    print(im.format, im.size, im.mode)
     return im
 
 def readImage(im):
@@ -55,13 +62,22 @@ def getASCIIEquivalent(num):
     #print(char_Matrix[rounded_mapped_num])
     return char_Matrix[rounded_mapped_num]
 
-
+# You’re displaying each pixel in your image using a character in your terminal. 
+# And whilst pixels are square, your terminal characters are rectangles, 
+# roughly three times as tall as they are wide. This will make your image appear squashed and narrow. 
+# The simplest way to fix this is to print each character in each row of your ASCII matrix three times, to stretch the image back out. 
+# For example, the list ['$', 'A', '#'] would be printed out as $$$AAA###. This function, make square, prints each character in the ASCII array thrice|#
+def printSquare(ASCII_array):
+    for x in range (len(ASCII_array)):
+        if (x % 150 == 0):
+            print(ASCII_array[x] * 3)
+        else:
+            print(ASCII_array[x] * 3, end="")
 
 def go():
     im = importImage()
     im_array = readImage(im)
     brightness_array = convertTuple(im_array)
     ASCII_array = createASCIIArray(brightness_array)
-    print(ASCII_array)
-
+    printSquare(ASCII_array)
 go()
