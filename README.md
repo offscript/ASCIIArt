@@ -7,4 +7,6 @@ This project requires an image processor. Since we made the snap decision to do 
 
 I also do a little bit of try catch stuff in python as an exercise. Here's the source I used for that: https://realpython.com/python-exceptions/
 
-Step 2
+Notes:
+
+This is written in python3 and uses the pillow package Pillow. To run on your machine, you'd need both of these things. As of June 17th, the program runs best in a terminal window that's greater than 460 px x 100 px.
