@@ -25,8 +25,20 @@ def readImage(im):
     #print(im_array)
     return im_array
 
+def convertTuple(im_array):
+    brightness_array = []
+    for x in range (len(im_array)):
+        #print(x)
+        brightness_array.append(getAverageBrightness(im_array[x]))
+    return brightness_array
+
+def getAverageBrightness(tuple_array):
+    return (tuple_array[0] + tuple_array[1] + tuple_array[2]) / 3
+
+
 def go():
     im = importImage()
     im_array = readImage(im)
+    brightness_array = convertTuple(im_array)
 
 go()
